@@ -13,7 +13,9 @@ info = Info(title="Quality Control API", version="1.0.0")
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
-# definindo tags
+# ------------------------------------------------------------------------------------
+# Definindo tags 
+# -------------------------------------------------------------------------------------
 home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
 produto_tag = Tag(name="Produto", description="Adição, visualização e remoção de produtos à base")
 comentario_tag = Tag(name="Comentario", description="Adição de um comentário à um produtos cadastrado na base")
@@ -24,7 +26,9 @@ def home():
     """
     return redirect('/openapi')
 
-
+# ------------------------------------------------------------------------------------
+# Definindo rota POST
+# -------------------------------------------------------------------------------------
 @app.post('/produto', tags=[produto_tag],
           responses={"200": ProdutoViewSchema, "409": ErrorSchema, "400": ErrorSchema})
 def add_produto(form: ProdutoSchema):
@@ -58,7 +62,9 @@ def add_produto(form: ProdutoSchema):
         error_msg = "Não foi possível salvar novo item :/"
         logger.warning(f"Erro ao adicionar produto '{produto.nome}', {error_msg}")
         return {"mesage": error_msg}, 400
-
+# ------------------------------------------------------------------------------------
+# Definindo rota GET
+# -------------------------------------------------------------------------------------
 
 @app.get('/produtos', tags=[produto_tag],
          responses={"200": ListagemProdutosSchema, "404": ErrorSchema})
@@ -107,7 +113,9 @@ def get_produto(query: ProdutoBuscaSchema):
         logger.debug(f"Produto econtrado: '{produto.nome}'")
         # retorna a representação de produto
         return apresenta_produto(produto), 200
-
+# ------------------------------------------------------------------------------------
+# Definindo rota DELETE
+# -------------------------------------------------------------------------------------
 
 @app.delete('/produto', tags=[produto_tag],
             responses={"200": ProdutoDelSchema, "404": ErrorSchema})
