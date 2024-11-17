@@ -1,6 +1,6 @@
 ---- ENGLISH ----
 
-# MY API / My API - Stephanie Lopes
+# My API - Stephanie Lopes
 
 This project is my MVP for Sprint 1 of the **Basic Full Stack Development** course
 
@@ -52,7 +52,7 @@ Open [http://localhost:5000/#/](http://localhost:5000/#/) in your browser to che
 
 ---- PORTUGUESE ----
 
-# MY API / Minha API - Stephanie Lopes
+# Minha API - Stephanie Lopes
 
 Este projeto é o meu MVP da Sprint 1 do curso de **Desenvolvimento Full Stack Básico** 
 O objetivo aqui é listar os produtos de uma loja de roupas, com o intuito de registrar um inventário dos itens.
